@@ -1,4 +1,4 @@
-import "./utils/style/global.scss";
+import "./style/global.scss";
 import Home from "./pages/Home";
 import Signin from "./pages/Signin";
 import Dashboard from "./pages/Dashboard";
