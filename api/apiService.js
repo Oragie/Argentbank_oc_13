@@ -44,7 +44,7 @@ export const getUserProfile = async () => {
   }
 
   const response = await fetchData("/user/profile", {
-    method: "POST",
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
