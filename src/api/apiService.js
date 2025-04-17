@@ -1,4 +1,4 @@
-import { fetchData } from "./api";
+import { fetchData } from "./api.js";
 
 // Fonction pour se connecter et stocker le token
 export const login = async (email, password) => {
