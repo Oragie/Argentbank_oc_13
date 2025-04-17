@@ -1,0 +1,32 @@
+.loader {
+  margin: auto;
+  text-align: center;
+}
+
+.loader {
+  width: 21px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  animation: d5 1s infinite linear alternate;
+}
+
+@keyframes d5 {
+  0% {
+    box-shadow: 20px 0 #fff, -20px 0 rgba(255, 255, 255, 0.1333333333);
+    /* points blancs */
+    background: #fff;
+    /* fond blanc */
+  }
+  33% {
+    box-shadow: 20px 0 #fff, -20px 0 rgba(255, 255, 255, 0.1333333333);
+    background: rgba(255, 255, 255, 0.1333333333);
+  }
+  66% {
+    box-shadow: 20px 0 rgba(255, 255, 255, 0.1333333333), -20px 0 #fff;
+    background: rgba(255, 255, 255, 0.1333333333);
+  }
+  100% {
+    box-shadow: 20px 0 rgba(255, 255, 255, 0.1333333333), -20px 0 #fff;
+    background: #fff;
+  }
+}/*# sourceMappingURL=loader.css.map */
