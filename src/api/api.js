@@ -1,9 +1,10 @@
 // Récupérer l'URL de la base de données depuis les variables d'environnement
-const DATABASE_URL = import.meta.env.DATABASE_URL;
+const DATABASE_URL = import.meta.env.VITE_DATABASE_URL;
 
 // Fonction pour récupérer les données depuis un endpoint
 export async function fetchData(endpoint, options = {}) {
   try {
+    console.log("Fetching:", `${DATABASE_URL}${endpoint}`, options);
     const response = await fetch(`${DATABASE_URL}${endpoint}`, options); // Construit l'URL complète
     if (!response.ok) {
       throw new Error("Network response was not ok " + response.statusText);

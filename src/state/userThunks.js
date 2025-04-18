@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { updateUserProfile, getUserProfile } from "./../api/apiService.js";
+import { updateUserProfile, getUserProfile } from "../api/apiService.js";
 
 export const updateUser = createAsyncThunk(
   "user/updateUser",

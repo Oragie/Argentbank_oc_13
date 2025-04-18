@@ -1,13 +1,12 @@
-import "./header.scss"
-import Logo from "./../../assets/img/argentBankLogo.png"
-import { NavLink } from "react-router-dom"
-import { useSelector } from "react-redux"
-import { selectFirstName } from "./../../app/selectors" // Import des sélecteurs
+import "./header.scss";
+import Logo from "./../../assets/img/argentBankLogo.png";
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectFirstName } from "./../../state/selectors"; // Import des sélecteurs
 import useAuth from "../../hooks/useAuth"; // Import du hook personnalisé
 // import { useUserProfile } from "../../hooks/useUserProfile"
 
 function Header() {
-
   // Utilisation des sélecteurs pour récupérer les infos utilisateur depuis Redux
   const firstName = useSelector(selectFirstName);
   const { isAuthenticated } = useAuth(); // Utilisation du hook ici
@@ -19,7 +18,11 @@ function Header() {
     <header>
       <nav className="main-nav">
         <NavLink to={`/`} className="main-nav-logo">
-          <img className="main-nav-logo-image" src={Logo} alt="Argent Bank Logo" />
+          <img
+            className="main-nav-logo-image"
+            src={Logo}
+            alt="Argent Bank Logo"
+          />
           <h1 className="sr-only">Argent Bank</h1>
         </NavLink>
         {isAuthenticated ? (
@@ -40,7 +43,7 @@ function Header() {
         )}
       </nav>
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "./../app/logTunks";
-import { fetchUserProfile } from "./../App/userThunks"; // Import pour recharger le profil
+import { loginUser } from "./../state/logTunks";
+import { fetchUserProfile } from "./../state/userThunks"; // Import pour recharger le profil
 
 export function useLoginAndGetUser() {
   const dispatch = useDispatch();

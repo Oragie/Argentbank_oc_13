@@ -2,7 +2,7 @@ import "./signin.scss";
 import { useNavigate } from "react-router-dom";
 import { useLoginAndGetUser } from "../../hooks/useLogin";
 import { useSelector } from "react-redux";
-import { selectLoadingSession } from "../../app/selectors";
+import { selectLoadingSession } from "../../state/selectors";
 import LoaderSession from "../../components/Loader";
 
 function Signin() {

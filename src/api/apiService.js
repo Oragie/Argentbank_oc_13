@@ -2,25 +2,30 @@ import { fetchData } from "./api.js";
 
 // Fonction pour se connecter et stocker le token
 export const login = async (email, password) => {
-  // Effacer les anciennes données
-  localStorage.removeItem("token");
-  localStorage.removeItem("user");
+  try {
+    // Effacer les anciennes données
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
 
-  const response = await fetchData("/user/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ email, password }),
-  });
+    const response = await fetchData("/user/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: email.trim(), password }),
+    });
 
-  const { token } = response.body;
+    const { token } = response.body;
 
-  if (token) {
-    localStorage.setItem("token", token);
+    if (token) {
+      localStorage.setItem("token", token);
+    }
+
+    return response;
+  } catch (error) {
+    console.error("Login error:", error);
+    throw error; // Relance l'erreur pour la gestion en amont
   }
-
-  return response;
 };
 
 // Fonction pour s'inscrire
