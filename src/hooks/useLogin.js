@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "./../state/logTunks";
+import { loginUser } from "../state/logThunks";
 import { fetchUserProfile } from "./../state/userThunks"; // Import pour recharger le profil
 
 export function useLoginAndGetUser() {
@@ -22,7 +22,7 @@ export function useLoginAndGetUser() {
       // Redirection après avoir mis à jour les infos
       navigate("/profile");
     } catch (err) {
-      setError(err.message || "Connection API error try later");
+      setError(err.message || "Connection API error try later(hooks)");
     }
   };
 

@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUser } from "./logTunks";
-
+import { loginUser } from "./logThunks";
 
 const initialState = {
   token: localStorage.getItem("token") || null, // Si le token est dans localStorage, il est récupéré ici
