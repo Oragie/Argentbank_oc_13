@@ -1,15 +1,34 @@
 import "./dashboard.scss";
 import EditNameForm from "../../components/EditNameForm";
 import AccountCard from "../../components/AccountCard";
-import accountData from "../../data/account-data.json";
 import { selectUser } from "../../state/selectors";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchAccounts } from "../../state/accountSlice";
+import { useEffect } from "react";
 
 function Dashboard() {
-  const { id } = useSelector(selectUser);
+  const dispatch = useDispatch();
+  const { id } = useSelector(selectUser); // Récupère l'ID de l'utilisateur connecté
+  const accounts = useSelector((state) => state.accounts.accounts); // Récupère les comptes depuis Redux
+  const loading = useSelector((state) => state.accounts.loading); // Vérifie si les comptes sont en cours de chargement
+  const error = useSelector((state) => state.accounts.error); // Récupère les erreurs éventuelles
+
+  // Charger les comptes au montage du composant
+  useEffect(() => {
+    dispatch(fetchAccounts());
+  }, [dispatch]);
+
   // Filtrer tous les comptes où l'`id` est présent dans le tableau `userId`
   const userAccounts =
-    accountData.filter((account) => account.userId.includes(id)) || [];
+    accounts.filter((account) => account.userId.includes(id)) || [];
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
 
   return (
     <>

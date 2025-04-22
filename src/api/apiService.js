@@ -1,4 +1,8 @@
-import { fetchData } from "./api.js";
+import {
+  fetchUserData,
+  getAccountTransactions,
+  getAccountsData,
+} from "./api.js";
 
 // Fonction pour se connecter et stocker le token
 export const login = async (email, password) => {
@@ -7,7 +11,7 @@ export const login = async (email, password) => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
 
-    const response = await fetchData("/user/login", {
+    const response = await fetchUserData("/user/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -30,7 +34,7 @@ export const login = async (email, password) => {
 
 // Fonction pour s'inscrire
 export const signup = async (email, password, firstName, lastName) => {
-  const response = await fetchData("/user/signup", {
+  const response = await fetchUserData("/user/signup", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -48,7 +52,7 @@ export const getUserProfile = async () => {
     throw new Error("Token not found, please log in");
   }
 
-  const response = await fetchData("/user/profile", {
+  const response = await fetchUserData("/user/profile", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -66,7 +70,7 @@ export const updateUserProfile = async (profileData) => {
     throw new Error("Token not found, please log in");
   }
 
-  const response = await fetchData("/user/profile", {
+  const response = await fetchUserData("/user/profile", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -77,3 +81,17 @@ export const updateUserProfile = async (profileData) => {
 
   return response;
 };
+
+// Fonction pour récupérer les données des comptes
+export async function fetchAccountsData() {
+  const response = await getAccountsData();
+
+  return response; // Retourne les données des comptes
+}
+
+// Fonction pour récupérer les transactions des comptes
+export async function fetchAccountTransactions() {
+  const response = await getAccountTransactions();
+
+  return response; // Retourne les données des transactions
+}
